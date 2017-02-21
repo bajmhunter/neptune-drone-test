@@ -3,6 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
+| Code Version
+|--------------------------------------------------------------------------
+|
+| This is the version of Neptune you're running
+|
+*/
+
+$config['application_version'] = '0.1';
+
+/*
+|--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
 |
@@ -23,8 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
-
+$config['base_url'] = 'http://127.0.0.1';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -76,7 +86,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'en';
 
 /*
 |--------------------------------------------------------------------------
@@ -100,7 +110,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = true;
 
 /*
 |--------------------------------------------------------------------------
