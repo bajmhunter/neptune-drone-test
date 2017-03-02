@@ -58,8 +58,6 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-
-
 		tags: {
 			css: {
 				options: {

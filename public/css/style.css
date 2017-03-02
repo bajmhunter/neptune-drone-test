@@ -1,0 +1,16 @@
+body {
+    min-height: 2000px;
+    padding-top: 70px;
+}
+
+.navbar-brand-dropdown {
+    margin: 0;
+}
+
+.navbar-brand.dropdown-toggle {
+    padding-top: 15px;
+}
+
+.dropdown-menu.dropdown-brand {
+    margin-left: -15px;
+}

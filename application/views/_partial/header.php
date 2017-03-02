@@ -7,85 +7,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Fixed Top Navbar Example for Bootstrap</title>
-<?php if ($this->input->cookie('debug') == "true" || $this->input->get("debug") == "true") : ?>
 
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" />
-    <!-- endbower -->
-
-    <!-- start css template tags -->
-    <!-- end css template tags -->
-
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="bower_components/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js"></script>
-    <!-- endbower -->
-
-    <!-- start js template tags -->
-    <!-- end js template tags -->
-
-<?php else : ?>
-
-    <!-- start mincss template tags -->
-    <link rel="stylesheet" type="text/css" href="dist/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="dist/neptune.min.css?rel=0153c019c3"/>
-    <!-- end mincss template tags -->
-
-    <!-- start minjs template tags -->
-    <script type="text/javascript" src="dist/bootstrap.min.js"></script>
-    <script type="text/javascript" src="dist/neptune.min.js?rel=05bd9309f7"></script>
-    <!-- end minjs template tags -->
-
-<?php endif; ?>
+    <?php $this->load->view('_partial/header_css_js'); ?>
 
 </head>
 
 <body>
 
-<!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button class="navbar-toggle collapsed" aria-expanded="false" type="button" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="nav navbar-nav navbar-brand-dropdown">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
+                    <a class="navbar-brand dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">
+                        <?php echo $section; ?> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-brand">
+                        <li><a href="<?php echo site_url('repair'); ?>">Repair</a></li>
+                        <li><a href="<?php echo site_url('sales'); ?>">Sales</a></li>
+                        <li><a href="<?php echo site_url('config'); ?>">Config</a></li>
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar/">Default</a></li>
-                <li><a href="../navbar-static-top/">Static top</a></li>
-                <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+        </div>
+        <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="dropdown" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Checkin <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="&#x27;">New Checkin</a>
+                        </li>
+                        <li><a href="#">Returning Checkin</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Checkout</a>
+                </li>
+                <li class="dropdown" class="dropdown" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Notes</a>
+                        </li>
+                        <li><a href="#">Tools</a>
+                        </li>
+                        <li><a href="#">Docs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Logout</a>
+                </li>
             </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
         </div><!--/.nav-collapse -->
+
+
     </div>
 </nav>
+
 
 <div class="container">

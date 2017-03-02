@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Repair Shop Tracking software built for small computer shops",
   "main": "index.php",
-  "license": "MIT",
+  "license": "Closed Source",
   "authors": [
     {
       "name": "Bryce Hunter",
