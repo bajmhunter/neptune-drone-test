@@ -11,7 +11,7 @@ class Login extends CI_Controller
     {
         if($this->Employee->is_logged_in())
         {
-            redirect('home');
+            redirect('repair');
         }
         else
         {
@@ -35,7 +35,7 @@ class Login extends CI_Controller
         }
         else
         {
-            redirect('home');
+            redirect('repair');
         }
     }
 
@@ -65,7 +65,7 @@ class Login extends CI_Controller
         }
         else
         {
-            redirect('home');
+            redirect('repair');
         }
     }
 

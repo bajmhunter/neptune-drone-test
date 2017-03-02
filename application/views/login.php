@@ -3,10 +3,18 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Neptune v<?php echo $this->config->item('application_version'); ?> | Login</title>
-    <!-- start css template tags -->
-    <link rel="stylesheet" type="text/css" href="css/login.css"/>
-    <link rel="stylesheet" type="text/css" href="dist/bootstrap.min.css"/>
-    <!-- end css template tags -->
+
+    <!-- start mincss template tags -->
+    <link rel="stylesheet" type="text/css" href="/dist/neptune.min.css?rel=3df71a5fc7"/>
+    <!-- end mincss template tags -->
+
+    <!-- start minjs template tags -->
+    <script type="text/javascript" src="/dist/neptune.min.js?rel=19def3b090"></script>
+    <!-- end minjs template tags -->
+
+    <!-- neptune:css -->
+    <link rel="stylesheet" type="text/css" href="/dist/login.css"/>
+    <!-- endneptune -->
 </head>
 <body onload="show<?php echo $method ?>()">
 

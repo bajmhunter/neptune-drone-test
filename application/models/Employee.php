@@ -219,6 +219,18 @@ class Employee extends Person
         return $this->db->get();
     }
 
+    public function store_user_data($person_id)
+    {
+        $this->db->select('employees.person_id, username, first_name, last_name, gender, phone_number, email, zip, country');
+        $this->db->from('employees');
+        $this->db->join('people', 'employees.person_id = people.person_id');
+        $this->db->where('employees.person_id', $person_id);
+
+        $db = $this->db->get();
+
+        return $db->row();
+    }
+
     /*
 	Logs out a user by destorying all session data and redirect to login
 	*/
@@ -251,6 +263,19 @@ class Employee extends Person
     }
 
     /*
+	Gets all information on currently logged in employee
+	*/
+    public function get_logged_in_employee_all_info()
+    {
+        if($this->is_logged_in())
+        {
+            return $this->session->person_data;
+        }
+
+        return FALSE;
+    }
+
+    /*
 	Logs in a user vis swipe cards
 	*/
     public function pin_login($pin)
@@ -260,6 +285,7 @@ class Employee extends Person
         if($query->num_rows() == 1)
         {
             $this->session->set_userdata('person_id', $query->row()->person_id);
+            $this->session->set_userdata('person_data', $this->store_user_data($query->row()->person_id));
             return TRUE;
         }
 
@@ -280,9 +306,8 @@ class Employee extends Person
             // compare passwords
             if (password_verify($password, $row->password))
             {
-                $this->session->set_userdata('person_id', $row->person_id);
-                $this->session->set_userdata('data', $row);
-
+                $this->session->set_userdata('person_id', $query->row()->person_id);
+                $this->session->set_userdata('person_data', $this->store_user_data($query->row()->person_id));
                 return TRUE;
             }
 

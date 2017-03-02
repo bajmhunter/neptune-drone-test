@@ -20,6 +20,7 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('login');
+		$this->load->view('_partial/header');
+		$this->load->view('_partial/footer');
 	}
 }

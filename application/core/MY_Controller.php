@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bryce
- * Date: 20/02/2017
- * Time: 23:20
- */
 
 class MY_Controller extends CI_Controller
 {
@@ -18,5 +12,20 @@ class MY_Controller extends CI_Controller
         {
             redirect('login/');
         }
+
+        if($this->uri->segment(1) == 'repair')
+        {
+            $data['section'] = 'Repair';
+        }elseif($this->uri->segment(1) == 'sales')
+        {
+            $data['section'] = 'Sales';
+        }elseif($this->uri->segment(1) =='config')
+        {
+            $data['section'] = 'Config';
+        }
+
+        $data['employee'] = $this->Employee->get_logged_in_employee_all_info();
+
+        $this->load->vars($data);
     }
 }
