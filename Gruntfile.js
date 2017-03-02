@@ -1,18 +1,15 @@
 module.exports = function(grunt) {
 
-    grunt.initConfig({
+	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		wiredep: {
 			task: {
 				ignorePath: '../../../public/',
-				src: ['application/views/_partial/header.php']
+				src: ['application/views/_partial/header_css_js.php']
 			}
 		},
 		bower_concat: {
 			all: {
-				mainFiles: {
-					'bootstrap-table': [ "src/bootstrap-table.js", "src/bootstrap-table.css", "dist/extensions/export/bootstrap-table-export.js", "dist/extensions/mobile/bootstrap-table-mobile.js"]
-				},
 				dest: {
 					'js': 'tmp/neptune_bower.js',
 					'css': 'tmp/neptune_bower.css'
@@ -23,38 +20,14 @@ module.exports = function(grunt) {
 			options: {
 				report: false
 			},
-			targetdistbootswatch: {
+			login: {
 				options: {
-					srcPrefix: 'public/bower_components/bootswatch',
-					destPrefix: 'public/dist/bootswatch'
-				},
-				files: {
-					'cerulean/bootstrap.min.css': 'cerulean/bootstrap.min.css',
-					'cosmo/bootstrap.min.css': 'cosmo/bootstrap.min.css',
-					'cyborg/bootstrap.min.css': 'cyborg/bootstrap.min.css',
-					'darkly/bootstrap.min.css': 'darkly/bootstrap.min.css',
-					'flatly/bootstrap.min.css': 'flatly/bootstrap.min.css',
-					'journal/bootstrap.min.css': 'journal/bootstrap.min.css',
-					'paper/bootstrap.min.css': 'paper/bootstrap.min.css',
-					'readable/bootstrap.min.css': 'readable/bootstrap.min.css',
-					'sandstone/bootstrap.min.css': 'sandstone/bootstrap.min.css',
-					'slate/bootstrap.min.css': 'slate/bootstrap.min.css',
-					'spacelab/bootstrap.min.css': 'spacelab/bootstrap.min.css',
-					'superhero/bootstrap.min.css': 'superhero/bootstrap.min.css',
-					'united/bootstrap.min.css': 'united/bootstrap.min.css',
-					'yeti/bootstrap.min.css': 'yeti/bootstrap.min.css',
-					'fonts': 'fonts'
-				}
-			},
-			bootstrapcore: {
-				options: {
-					srcPrefix: 'public/bower_components/bootstrap/dist',
+					srcPrefix: 'public/css',
 					destPrefix: 'public/dist'
 
 				},
 				files: {
-					'bootstrap.min.css': 'css/bootstrap.min.css',
-					'bootstrap.min.js': 'js/bootstrap.min.js'
+					'login.css': 'login.css'
 				}
 			}
 		},
@@ -71,7 +44,7 @@ module.exports = function(grunt) {
 					separator: ';'
 				},
 				files: {
-					'tmp/<%= pkg.name %>.js': ['tmp/neptune_bower.js', 'public/js/jquery*', 'public/js/*.js']
+					'tmp/<%= pkg.name %>.js': ['tmp/neptune_bower.js', 'public/js/*.js']
 				}
 			}
 		},
@@ -85,59 +58,60 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+
+
 		tags: {
-			css_login: {
+			css: {
 				options: {
 					scriptTemplate: '<rel type="text/css" src="{{ path }}"></rel>',
-					openTag: '<!-- start css template tags -->',
-					closeTag: '<!-- end css template tags -->',
-                    ignorePath: '../../public/'
-				},
-				src: ['public/css/login.css', 'public/dist/bootstrap.min.css'],
-				dest: 'application/views/login.php'
-			},
-			css_header: {
-				options: {
-					scriptTemplate: '<rel type="text/css" src="{{ path }}"></rel>',
-					openTag: '<!-- start css template tags -->',
-					closeTag: '<!-- end css template tags -->',
-					ignorePath: '../../../public/'
+					openTag: '<!-- neptune:css -->',
+					closeTag: '<!-- endneptune:css -->',
+					ignorePath: '../../../public'
 				},
 				src: ['public/css/*.css', '!public/css/login.css'],
-				dest: 'application/views/_partial/header.php',
-			},
-			mincss_header: {
-				options: {
-					scriptTemplate: '<rel type="text/css" src="{{ path }}"></rel>',
-					openTag: '<!-- start mincss template tags -->',
-					closeTag: '<!-- end mincss template tags -->',
-					ignorePath: '../../../public/'
-				},
-				src: ['public/dist/*.css', '!public/dist/login.css'],
-				dest: 'application/views/_partial/header.php',
+				dest: 'application/views/_partial/header_css_js.php',
 			},
 			js: {
 				options: {
 					scriptTemplate: '<script type="text/javascript" src="{{ path }}"></script>',
-					openTag: '<!-- start js template tags -->',
-					closeTag: '<!-- end js template tags -->',
-					ignorePath: '../../../public/'
+					openTag: '<!-- neptune:js -->',
+					closeTag: '<!-- endneptune:js -->',
+					ignorePath: '../../../public'
 				},
-				src: ['public/js/jquery*', 'public/js/*.js'],
-				dest: 'application/views/_partial/header.php'
+				src: ['public/js/*.js'],
+				dest: 'application/views/_partial/header_css_js.php'
+			},
+			login_css: {
+				options: {
+					scriptTemplate: '<rel type="text/css" src="{{ path }}"></rel>',
+					openTag: '<!-- neptune:css -->',
+					closeTag: '<!-- endneptune -->',
+					ignorePath: '../../public'
+				},
+				src: ['public/dist/login.css'],
+				dest: 'application/views/login.php'
+			},
+			mincss: {
+				options: {
+					scriptTemplate: '<rel type="text/css" src="{{ path }}"></rel>',
+					openTag: '<!-- start mincss template tags -->',
+					closeTag: '<!-- end mincss template tags -->',
+					ignorePath: '../../../public'
+				},
+				src: ['public/dist/*.css', '!public/dist/login.css'],
+				dest: 'application/views/_partial/header_css_js.php'
 			},
 			minjs: {
 				options: {
 					scriptTemplate: '<script type="text/javascript" src="{{ path }}"></script>',
 					openTag: '<!-- start minjs template tags -->',
 					closeTag: '<!-- end minjs template tags -->',
-					ignorePath: '../../../public/'
+					ignorePath: '../../../public'
 				},
-				src: ['public/dist/*min.js'],
-				dest: 'application/views/_partial/header.php'
+				src: ['public/dist/*.js'],
+				dest: 'application/views/_partial/header_css_js.php'
 			}
 		},
-
 		cachebreaker: {
 			dev: {
 				options: {
@@ -148,14 +122,18 @@ module.exports = function(grunt) {
 					replacement: 'md5'
 				},
 				files: {
-					src: ['application/views/_partial/header.php', 'application/views/login.php']
+					src: ['application/views/_partial/header_css_js.php', 'application/views/login.php']
 				}
 			}
 		}
-    });
+	});
 
 	require('load-grunt-tasks')(grunt);
 
-	grunt.registerTask('default', ['wiredep', 'bower_concat', 'bowercopy', 'concat', 'uglify', 'cssmin', 'tags', 'cachebreaker']);
+	grunt.registerTask('bowerupdate', ['wiredep', 'tags:css', 'tags:js']);
+	grunt.registerTask('minify', ['bower_concat', 'cssmin', 'concat', 'uglify', 'tags:mincss', 'tags:minjs', 'cachebreaker']);
+	grunt.registerTask('login', ['bowercopy', 'tags:login_css']);
+
+	grunt.registerTask('default',['bowerupdate', 'minify', 'login']);
 
 };
