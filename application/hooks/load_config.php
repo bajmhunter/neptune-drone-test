@@ -16,10 +16,11 @@ function load_config()
         if (!file_exists('../application/language/' . current_language()))
         {
             $CI->config->set_item('language', 'english');
+            $CI->config->set_item('language_code', 'en-GB');
         }
 
         load_language_files('../vendor/codeigniter/framework/system/language', current_language());
-        load_language_files('../application/language', current_language());
+        load_language_files('../application/language', current_language_code());
     }
     
     //Set timezone from config database
@@ -29,10 +30,9 @@ function load_config()
     }
     else
     {
-        date_default_timezone_set('Europe/Longon');
+        date_default_timezone_set('Europe/London');
     }
 
-    bcscale(max(2, $CI->config->item('currency_decimals') + $CI->config->item('tax_decimals')));
 }
 
 /**
@@ -60,6 +60,11 @@ function load_language_files($path, $language)
 function current_language()
 {
     return get_instance()->config->item('language');
+}
+
+function current_language_code()
+{
+    return get_instance()->config->item('language_code');
 }
 
 ?>
