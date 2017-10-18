@@ -27,3 +27,4 @@ git-svn-diff.py
 dist/
 docs/
 vendor/
+.DS_Store
