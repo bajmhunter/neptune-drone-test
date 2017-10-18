@@ -24,3 +24,6 @@ git-svn-diff.py
 *.log
 *.tmp
 .vagrant/
+dist/
+docs/
+vendor/
