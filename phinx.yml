@@ -1,0 +1,26 @@
+paths:
+    migrations: %%PHINX_CONFIG_DIR%%/db/migrations
+    seeds: %%PHINX_CONFIG_DIR%%/db/seeds
+
+environments:
+    default_migration_table: schema_version
+    default_database: development
+    testing:
+        adapter: mysql
+        host: localhost
+        name: neptune_testing
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
+
+    development:
+        adapter: mysql
+        host: neptune
+        name: neptune
+        user: root
+        pass: root
+        port: 3306
+        charset: utf8
+
+version_order: creation
