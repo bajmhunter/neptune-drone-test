@@ -32,6 +32,16 @@ class UsersTable extends AbstractMigration
         $table->addColumn('username', 'string', ['limit' => 255])
               ->addColumn('password', 'string', ['limit' => 255])
               ->addColumn('deleted', 'integer', ['limit' => 1])
+              ->addColumn('first_name', 'string', ['limit' => 255])
+              ->addColumn('last_name', 'string', ['limit' => 255])
+              ->addColumn('gender', 'integer', ['limit' => 1])
+              ->addColumn('phone_number', 'string', ['limit' => 255])
+              ->addColumn('email', 'string', ['limit' => 255])
+              ->addColumn('address_1', 'string', ['limit' => 255])
+              ->addColumn('address_2', 'string', ['limit' => 255])
+              ->addColumn('city', 'string', ['limit' => 255])
+              ->addColumn('county', 'string', ['limit' => 255])
+              ->addColumn('postcode', 'string', ['limit' => 255])
               ->addIndex('username', ['unique' => true])
               ->create();
 
