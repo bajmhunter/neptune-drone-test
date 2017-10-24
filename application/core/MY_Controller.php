@@ -6,9 +6,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('Employee');
-
-        if(!$this->Employee->is_logged_in())
+        if(!$this->auth->isLoggedIn())
         {
             redirect('login/');
         }
@@ -23,8 +21,6 @@ class MY_Controller extends CI_Controller
         {
             $data['section'] = 'Config';
         }
-
-        $data['employee'] = $this->Employee->get_logged_in_employee_all_info();
 
         $this->load->vars($data);
     }

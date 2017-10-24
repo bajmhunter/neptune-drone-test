@@ -9,7 +9,8 @@ class Login extends CI_Controller
 
     public function index()
     {
-        if($this->Employee->is_logged_in())
+        //die(var_dump($this->auth->logout()));
+        if($this->auth->isLoggedIn())
         {
             redirect('repair');
         }
@@ -17,42 +18,12 @@ class Login extends CI_Controller
         {
             if($this->form_validation->run() == FALSE)
             {
-                $data['method'] = $this->config->item('login_default');
-                $this->load->view('login', $data);
+                $this->load->view('login');
             }
         }
     }
 
-    public function pin()
-    {
-        $this->form_validation->set_rules('pinnumber', 'lang:login_pin', 'callback_pin_check');
-        $this->form_validation->set_error_delimiters('<span class="error-msg">', '</span>');
-
-        if($this->form_validation->run() == FALSE)
-        {
-            $data['method'] = $this->config->item('login_default');
-            $this->load->view('login', $data);
-        }
-        else
-        {
-            redirect('repair');
-        }
-    }
-
-    public function pin_check()
-    {
-        $pin = $this->input->post('pinnumber');
-
-        if(!$this->Employee->pin_login($pin))
-        {
-            $this->form_validation->set_message('pin_check', $this->lang->line('login_invalid_pin'));
-            return FALSE;
-        }
-
-        return TRUE;
-    }
-
-    public function password()
+    public function check()
     {
         $this->form_validation->set_rules('username', 'lang:login_username', 'callback_password_check');
         $this->form_validation->set_error_delimiters('<span class="error-msg">', '</span>');
@@ -60,8 +31,7 @@ class Login extends CI_Controller
 
         if($this->form_validation->run() == FALSE)
         {
-            $data['method'] = $this->config->item('login_default');
-            $this->load->view('login', $data);
+            $this->load->view('login');
         }
         else
         {
@@ -69,12 +39,13 @@ class Login extends CI_Controller
         }
     }
 
-    public function password_check($username)
+    public function password_check()
     {
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        if(!$this->Employee->pasword_login($username, $password))
-        {
+        if(!$this->auth->login($username, $password)){
+
             $this->form_validation->set_message('username', $this->lang->line('login_invalid_username_and_password'));
 
             return FALSE;
@@ -85,7 +56,8 @@ class Login extends CI_Controller
 
     public function logout()
     {
-        $this->Employee->logout();
+        if($this->auth->logout())
+            redirect('login');
     }
 
 }
