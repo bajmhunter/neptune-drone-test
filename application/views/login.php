@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Neptune v<?php echo $this->config->item('application_version'); ?> | Login</title>
+    <title>Login | Neptune v<?php echo $this->config->item('application_version'); ?></title>
 
     <!-- start mincss template tags -->
     <link rel="stylesheet" type="text/css" href="/dist/neptune.min.css?rel=3df71a5fc7"/>

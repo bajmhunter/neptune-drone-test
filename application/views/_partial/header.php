@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title><?php echo $title; ?> | Neptune v<?php echo $this->config->item('application_version'); ?></title>
 
     <?php $this->load->view('_partial/header_css_js'); ?>
 
@@ -41,9 +41,9 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Checkin <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="&#x27;">New Checkin</a>
+                        <li><a href="<?php echo site_url('repair/checkin/new'); ?>">New Checkin</a>
                         </li>
-                        <li><a href="#">Returning Checkin</a>
+                        <li><a href="<?php echo site_url('repair/checkin/returing'); ?>">Returning Checkin</a>
                         </li>
                     </ul>
                 </li>
@@ -59,7 +59,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#">Logout</a>
+                <li><a href="<?php echo site_url('logout'); ?>">Logout</a>
                 </li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
