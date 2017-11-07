@@ -49,7 +49,7 @@ class Backup extends CI_Model
 		$this->load->dbutil($prefs);
 
 		$backup = $this->dbutil->backup();
-		//die(print_r($backup)); 
+		
 		$name = date('Ymd_His') . '.gz';
 		write_file('../backups/' . $name, $backup);
 
