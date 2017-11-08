@@ -10,6 +10,14 @@
 
     <?php $this->load->view('_partial/header_css_js'); ?>
 
+    <script type="text/javascript">
+        toastr.options = {
+            "positionClass": "<?php echo $this->config->item('notify_position'); ?>",
+            "progressBar": <?php echo $this->config->item('notify_progress'); ?>,
+            "timeOut": <?php echo $this->config->item('notify_timeout'); ?>
+        }
+    </script>
+
 </head>
 
 <body>
