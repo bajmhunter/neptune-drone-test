@@ -1,4 +1,4 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-10 col-md-offset-1">
     <h3><?php echo $this->lang->line('config_notifications'); ?></h3>
     <div class="row">
         <div class="col-md-12 block wide">
@@ -12,33 +12,33 @@
             <div id="required_fields_message"><?php echo $this->lang->line('common_fields_required_message'); ?></div>
             <ul id="info_error_message_box" class="error_message_box"></ul>
 
-            <div class="form-group form-group-sm">  
-                <div class="row">
-                    <div class="col-sm-6">
-                        <?php echo form_label($this->lang->line('config_notification_horizontal'), 'notify_horizontal_position', array('class' => 'control-label col-xs-2')); ?>
-                        <?php echo form_dropdown('notify_horizontal_position', array(
-                                'left' => $this->lang->line('common_left'),
-                                'right' => $this->lang->line('common_right')
-                            ),
-                                $notification['horizontal'], array(
-                                    'class' => 'form-control input-sm')); ?>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <?php echo form_label($this->lang->line('config_notification_vertical'), 'notify_vertical_position', array('class' => 'control-label col-xs-2')); ?>
-                        <?php echo form_dropdown('notify_vertical_position', array(
+            <div class="form-group form-group-sm">
+                <?php echo form_label($this->lang->line('config_notification_alignment'), 'notify_horizontal_position', array('class' => 'control-label col-xs-3')); ?>
+                <div class="col-sm-9">
+                    <div class="form-group form-group-sm row">
+                        <div class='col-sm-3'>
+                            <?php echo form_dropdown('notify_vertical_position', array(
                                 'top' => $this->lang->line('common_top'),
                                 'center' => $this->lang->line('common_center'),
                                 'bottom' => $this->lang->line('common_bottom')
                             ),
                                 $notification['vertical'], array(
                                     'class' => 'form-control input-sm')); ?>
+                        </div>
+                        <div class='col-sm-3'>
+                            <?php echo form_dropdown('notify_horizontal_position', array(
+                                'left' => $this->lang->line('common_left'),
+                                'right' => $this->lang->line('common_right')
+                            ),
+                                $notification['horizontal'], array(
+                                    'class' => 'form-control input-sm')); ?>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('config_notify_timeout'), 'notify_timeout', array('class' => 'control-label col-xs-2')); ?>
+                <?php echo form_label($this->lang->line('config_notify_timeout'), 'notify_timeout', array('class' => 'control-label col-xs-3')); ?>
                 <div class="col-xs-6">
                     <div class="input-group">
                         <?php echo form_dropdown('notify_timeout', array(
@@ -55,7 +55,7 @@
             </div>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('config_notify_progress'), 'notify_progress', array('class' => 'control-label col-xs-2')); ?>
+                <?php echo form_label($this->lang->line('config_notify_progress'), 'notify_progress', array('class' => 'control-label col-xs-3')); ?>
                 <div class="col-xs-6">
                     <div class="input-group">
                         <?php echo form_dropdown('notify_progress', array(

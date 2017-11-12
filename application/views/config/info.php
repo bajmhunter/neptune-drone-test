@@ -1,4 +1,11 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-10 col-md-offset-1">
+        <h3><?php echo $this->lang->line('config_info'); ?></h3>
+    <div class="row">
+        <div class="col-md-12 block wide">
+            <span><?php echo $this->lang->line('config_info_settings'); ?></span>
+        </div>
+    </div>
+
 <?php echo form_open('config/save_info/', array('id' => 'info_config_form', 'class' => 'form-horizontal')); ?>
     <div id="config_wrapper">
         <fieldset id="config_info">
@@ -6,7 +13,7 @@
             <ul id="info_error_message_box" class="error_message_box"></ul>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('config_company'), 'company', array('class' => 'control-label col-xs-2 required')); ?>
+                <?php echo form_label($this->lang->line('config_company'), 'company', array('class' => 'control-label col-xs-3 required')); ?>
                 <div class="col-xs-6">
                     <div class="input-group">
                         <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-home"></span></span>
@@ -20,7 +27,7 @@
             </div>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('config_address'), 'address', array('class' => 'control-label col-xs-2 required')); ?>
+                <?php echo form_label($this->lang->line('config_address'), 'address', array('class' => 'control-label col-xs-3 required')); ?>
                 <div class='col-xs-6'>
                     <?php echo form_textarea(array(
                         'name' => 'address',
@@ -31,7 +38,7 @@
             </div>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('config_website'), 'website', array('class' => 'control-label col-xs-2')); ?>
+                <?php echo form_label($this->lang->line('config_website'), 'website', array('class' => 'control-label col-xs-3')); ?>
                 <div class="col-xs-6">
                     <div class="input-group">
                         <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-globe"></span></span>
@@ -45,7 +52,7 @@
             </div>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('common_email'), 'email', array('class' => 'control-label col-xs-2')); ?>
+                <?php echo form_label($this->lang->line('common_email'), 'email', array('class' => 'control-label col-xs-3')); ?>
                 <div class="col-xs-6">
                     <div class="input-group">
                         <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-envelope"></span></span>
@@ -60,7 +67,7 @@
             </div>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('config_phone'), 'phone', array('class' => 'control-label col-xs-2 required')); ?>
+                <?php echo form_label($this->lang->line('config_phone'), 'phone', array('class' => 'control-label col-xs-3 required')); ?>
                 <div class="col-xs-6">
                     <div class="input-group">
                         <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-phone-alt"></span></span>
@@ -74,7 +81,7 @@
             </div>
 
             <div class="form-group form-group-sm">  
-                <?php echo form_label($this->lang->line('config_fax'), 'fax', array('class' => 'control-label col-xs-2')); ?>
+                <?php echo form_label($this->lang->line('config_fax'), 'fax', array('class' => 'control-label col-xs-3')); ?>
                 <div class="col-xs-6">
                     <div class="input-group">
                         <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-phone-alt"></span></span>

@@ -1,28 +1,42 @@
 <?php $this->load->view("_partial/header"); ?>
-
-<ul class="nav nav-tabs">
-    <li class="active">
-        <a data-toggle="tab" href="#info_tab"><?php echo $this->lang->line('config_info'); ?></a>
-    </li>
-    <li>
-        <a data-toggle="tab" href="#notifications_tab"><?php echo $this->lang->line('config_notifications'); ?></a>
-    </li>
-    <li>
-        <a data-toggle="tab" href="#backup_tab"><?php echo $this->lang->line('config_backup'); ?></a>
-    </li>
-</ul>
-
-<div class="tab-content">
-    <div class="tab-pane fade in active" id="info_tab">
-        <?php $this->load->view("config/info"); ?>
-    </div>
-    <div class="tab-pane" id="notifications_tab">
-        <?php $this->load->view("config/notifications"); ?>
-    </div>
-    <div class="tab-pane" id="backup_tab">
-        <?php $this->load->view("config/backup"); ?>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked admin-menu">
+                <li class="active"><a data-target-id="info"><i class="fa fa-home fa-fw"></i><?php echo $this->lang->line('config_info'); ?></a></li>
+                <li><a data-target-id="notifications"><i class="fa fa-list-alt fa-fw"></i><?php echo $this->lang->line('config_notifications'); ?></a></li>
+                <li><a data-target-id="backup"><i class="fa fa-file-o fa-fw"></i><?php echo $this->lang->line('config_backup'); ?></a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 well admin-content" id="info">
+            <?php $this->load->view("config/info"); ?>
+        </div>
+        <div class="col-md-9 well admin-content" id="notifications">
+            <?php $this->load->view("config/notifications"); ?>
+        </div>
+        <div class="col-md-9 well admin-content" id="backup">
+            <?php $this->load->view("config/backup"); ?>
+        </div>
     </div>
 
-</div>
-
+    <script type="text/javascript">
+        $(document).ready(function()
+            {
+                var navItems = $('.admin-menu li > a');
+                var navListItems = $('.admin-menu li');
+                var allWells = $('.admin-content');
+                var allWellsExceptFirst = $('.admin-content:not(:first)');
+                
+                allWellsExceptFirst.hide();
+                navItems.click(function(e)
+                {
+                    e.preventDefault();
+                    navListItems.removeClass('active');
+                    $(this).closest('li').addClass('active');
+                    
+                    allWells.hide();
+                    var target = $(this).attr('data-target-id');
+                    $('#' + target).show();
+                });
+            });
+    </script>
 <?php $this->load->view("_partial/footer"); ?>
