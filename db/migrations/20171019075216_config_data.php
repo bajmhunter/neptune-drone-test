@@ -68,10 +68,6 @@ class ConfigData extends AbstractMigration
             array(
                 'key' => 'timezone',
                 'value' => 'Europe/London'
-            ),
-            array(
-                'key' => 'hash',
-                'value' => 'a64bc388'
             )
         );
 

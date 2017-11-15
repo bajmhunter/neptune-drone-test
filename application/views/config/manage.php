@@ -5,6 +5,7 @@
                 <li class="active"><a data-target-id="info"><i class="fa fa-home fa-fw"></i><?php echo $this->lang->line('config_info'); ?></a></li>
                 <li><a data-target-id="notifications"><i class="fa fa-list-alt fa-fw"></i><?php echo $this->lang->line('config_notifications'); ?></a></li>
                 <li><a data-target-id="backup"><i class="fa fa-file-o fa-fw"></i><?php echo $this->lang->line('config_backup'); ?></a></li>
+                <li><a data-target-id="about"><i class="fa fa-file-o fa-fw"></i><?php echo $this->lang->line('config_about'); ?></a></li>
             </ul>
         </div>
         <div class="col-md-9 well admin-content" id="info">
@@ -15,6 +16,9 @@
         </div>
         <div class="col-md-9 well admin-content" id="backup">
             <?php $this->load->view("config/backup"); ?>
+        </div>
+        <div class="col-md-9 well admin-content" id="about">
+            <?php $this->load->view("config/about"); ?>
         </div>
     </div>
 

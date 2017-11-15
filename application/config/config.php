@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $config['application_version'] = '0.1';
+$config['hash'] = 'a64bc388';
 
 /*
 |--------------------------------------------------------------------------
