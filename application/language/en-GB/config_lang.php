@@ -25,3 +25,13 @@ $lang['config_notify_10s'] = "10 Seconds";
 $lang['config_notify_timeout'] = "Notification timeout";
 $lang['config_notify_progress'] = "Progress bar";
 $lang['config_info_settings'] = "General store settings";
+$lang['config_about'] = "About";
+$lang['config_info'] = "Info";
+$lang['config_about_page'] = "Neptune version information";
+$lang['config_application_version'] = "Application Version";
+$lang['config_application_hash'] = "Commit Hash";
+$lang['config_pos_version'] = "Point Of Sale Version";
+$lang['config_repair_version'] = "Repair Version";
+$lang['config_config_version'] = "Config Version";
+
+
