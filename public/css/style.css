@@ -14,3 +14,20 @@ body {
 .dropdown-menu.dropdown-brand {
     margin-left: -15px;
 }
+
+.spacer {
+    margin-top: 40px; /* define margin as you see fit */
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}

@@ -10,7 +10,6 @@ class Checkin extends MY_Controller
     public function new()
     {
     	$data['title'] = "New Checkin";
-        $this->load->view('_partial/header', $data);
-        $this->load->view('_partial/footer');
+        $this->load->view('checkin/new', $data);
     }
 }

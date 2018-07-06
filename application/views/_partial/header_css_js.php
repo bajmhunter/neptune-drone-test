@@ -3,9 +3,11 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.css" />
     <!-- endbower -->
 
     <!-- neptune:css -->
+    <link rel="stylesheet" type="text/css" href="/css/checkin.css"/>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <!-- endneptune:css -->
 
