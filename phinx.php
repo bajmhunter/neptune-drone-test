@@ -13,10 +13,10 @@ return [
         'default_database' => 'development',
         'development' => [
             'adapter' => 'mysql',
-            'host' => '127.0.0.1',
-            'name' => 'neptune',
-            'user' => 'root',
-            'pass' => 'pass',
+            'host' => getenv('MYSQL_HOST_NAME'),
+            'name' => getenv('MYSQL_DB_NAME'),
+            'user' => getenv('MYSQL_USERNAME'),
+            'pass' => getenv('MYSQL_PASSWORD'),
             'port' => '3306',
             'charset' => 'utf8'
         ]
