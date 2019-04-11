@@ -25,3 +25,13 @@ $hook['post_controller'] = array(
     'filename' => 'db_log.php',
     'filepath' => 'hooks'
 );
+
+$hook['pre_system'] = function() {
+    $config_path = APPPATH . 'config/';
+	try {
+		$dotenv = Dotenv\Dotenv::create(APPPATH . 'config/');
+		$dotenv->overload();
+	} catch(Exception $e) {
+		// continue, .env file not present
+	}
+};

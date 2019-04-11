@@ -10,7 +10,7 @@ function load_config()
     }
     
     //Loads all the language files from the language directory
-    if(!empty(current_language()))
+    if(! current_language())
     {
         // fallback to English if language folder does not exist
         if (!file_exists('../application/language/' . current_language()))

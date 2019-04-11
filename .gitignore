@@ -28,3 +28,4 @@ dist/
 docs/
 vendor/
 .DS_Store
+application/config/.env
