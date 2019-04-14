@@ -1,23 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Login | Neptune v<?php echo $this->config->item('application_version'); ?></title>
-
-    <!-- start mincss template tags -->
-    <link rel="stylesheet" type="text/css" href="/dist/neptune.min.css?rel=3df71a5fc7"/>
-    <!-- end mincss template tags -->
-
-    <!-- start minjs template tags -->
-    <script type="text/javascript" src="/dist/neptune.min.js?rel=19def3b090"></script>
-    <!-- end minjs template tags -->
-
-    <!-- neptune:css -->
-    <link rel="stylesheet" type="text/css" href="/dist/login.css"/>
-    <!-- endneptune -->
-</head>
-<body>
-
+<?php
+$this->load->view('_partial/header');
+?>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
