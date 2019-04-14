@@ -8,20 +8,19 @@ function load_config()
     {	
         $CI->config->set_item($CI->security->xss_clean($app_config->key), $CI->security->xss_clean($app_config->value));
     }
-    
-    //Loads all the language files from the language directory
-    if(! current_language())
-    {
-        // fallback to English if language folder does not exist
-        if (!file_exists('../application/language/' . current_language()))
-        {
-            $CI->config->set_item('language', 'english');
-            $CI->config->set_item('language_code', 'en-GB');
-        }
 
-        load_language_files('../vendor/codeigniter/framework/system/language', current_language());
-        load_language_files('../application/language', current_language_code());
+    // fallback to English if language settings are not correct
+    $file_exists = !file_exists('../application/language/' . current_language_code());
+    if(current_language_code() == null || current_language() == null || $file_exists)
+
+    {
+        $CI->config->set_item('language', 'english');
+        $CI->config->set_item('language_code', 'en-GB');
     }
+
+    load_language_files('../vendor/codeigniter/framework/system/language', current_language());
+    load_language_files('../application/language', current_language_code());
+
     
     //Set timezone from config database
     if($CI->config->item('timezone'))
