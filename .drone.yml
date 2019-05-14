@@ -14,9 +14,7 @@ steps:
   image: digitallyseamless/nodejs-bower-grunt:latest
   commands:
   - npm install && bower install && grunt
-  
-  
-telegram:
+- name: Notifications
   image: appleboy/drone-telegram
   settings:
     token: 
