@@ -2,11 +2,15 @@ kind: pipeline
 name: default
 
 steps:
-- name: composer
+- name: Composer Install
   image: composer:latest
   commands:
   -  composer install
-- name: npm_configure
-  image: node:latest
-  commands: 
-  - npm install
+- name: Translations
+  image: lucor/php7-cli:latest
+  commands:
+  - php bin/install.php translations develop
+- name: Node, Bower Grunt
+  image: digitallyseamless/nodejs-bower-grunt:latest
+  commands:
+  - npm install && bower install && grunt package
