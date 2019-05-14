@@ -18,11 +18,14 @@ steps:
   
 telegram:
   image: appleboy/drone-telegram
-  token: 782307972:AAFkuv7FEfBFviWFcRic38Tya6O4bHj0bZQ
-  to: 43672802
-  message: >
-    {{#success build.status}}
-      build {{build.number}} succeeded. Good job.
-    {{else}}
-      build {{build.number}} failed. Fix me please.
-    {{/success}}
+  settings:
+    token: 
+      from_secret: telegram_api
+    to: 
+      from_secret: telegram_user
+    message: >
+      {{#success build.status}}
+        build {{build.number}}, based on commit {{truncate build.sha 8}} on branch {{commit.branch}} succeeded. Good job.
+      {{else}}
+        build {{build.number}} failed. Fix me please.
+      {{/success}}
