@@ -2,10 +2,11 @@ kind: pipeline
 name: default
 
 steps:
-- name: build
-  image: ubuntu
+- name: composer
+  image: composer:latest
+  commands:
+  -  composer install
+- name: npm_configure
+  image: node:latest
   commands: 
-    - apt-get install -y curl
-    - curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > docker-compose
-    - chmod +x docker-compose
-    - sudo mv docker-compose /usr/local/bin
+  - npm install
