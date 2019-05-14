@@ -17,9 +17,9 @@ steps:
 - name: Notifications
   image: appleboy/drone-telegram
   settings:
-    token: 
+    token:
       from_secret: telegram_api
-    to: 
+    to:
       from_secret: telegram_user
     message: >
       {{#success build.status}}
