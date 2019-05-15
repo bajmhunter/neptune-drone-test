@@ -1,6 +1,5 @@
 kind: pipeline
 name: default
-path: /app
 
 steps:
 - name: Composer Install
@@ -22,10 +21,13 @@ steps:
   - echo MYSQL_USERNAME="root"  >> application/config/.env
   - echo MYSQL_PASSWORD=""  >> application/config/.env
   - echo MYSQL_DB_NAME="neptune" >> application/config/.env
-  
+  - php7enmod -s cli pdo_mysql
   - pwd
   - cat application/config/.env
   - vendor/bin/phinx migrate
+
+kind: pipeline
+name: Notifications
 - name: Notifications
   image: appleboy/drone-telegram
   settings:
