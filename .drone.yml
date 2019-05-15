@@ -17,9 +17,7 @@ steps:
   - npm install && bower install && grunt
 - name: Database Setup
   image: lucor/php7-cli
-  detach: true
   commands:
-  - mv /app/application/config/.env.example /app/application/config/.env
   - echo MYSQL_HOST_NAME="database" >> application/config/.env
   - echo MYSQL_USERNAME="root"  >> application/config/.env
   - echo MYSQL_PASSWORD=""  >> application/config/.env
