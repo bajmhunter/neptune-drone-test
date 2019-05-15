@@ -20,6 +20,13 @@ steps:
   detach: true
   commands:
   - mv /app/application/config/.env.example /app/application/config/.env
+  - echo MYSQL_HOST_NAME="database" >> application/config/.env
+  - echo MYSQL_USERNAME="root"  >> application/config/.env
+  - echo MYSQL_PASSWORD=""  >> application/config/.env
+  - echo MYSQL_DB_NAME="neptune" >> application/config/.env
+  
+  - pwd
+  - cat application/config/.env
   - vendor/bin/phinx migrate
 - name: Notifications
   image: appleboy/drone-telegram
