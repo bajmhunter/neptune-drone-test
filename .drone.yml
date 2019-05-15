@@ -15,7 +15,7 @@ steps:
   commands:
   - npm install && bower install && grunt
 - name: Database Setup
-  image: virtualforce/php7.1-pdo-mysql-ci
+  image: virtualforce/php7.1-pdo-mysql-ci:1.1
   commands:
   - echo MYSQL_HOST_NAME="database" >> application/config/.env
   - echo MYSQL_USERNAME="root"  >> application/config/.env
