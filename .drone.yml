@@ -28,6 +28,7 @@ steps:
 
 kind: pipeline
 name: Notifications
+steps:
 - name: Notifications
   image: appleboy/drone-telegram
   settings:
