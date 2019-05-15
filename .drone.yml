@@ -15,7 +15,7 @@ steps:
   commands:
   - npm install && bower install && grunt
 - name: Database Setup
-  image: lucor/php7-cli
+  image: virtualforce/php7.1-pdo-mysql-ci
   commands:
   - echo MYSQL_HOST_NAME="database" >> application/config/.env
   - echo MYSQL_USERNAME="root"  >> application/config/.env
@@ -26,18 +26,6 @@ steps:
   - cat application/config/.env
   - vendor/bin/phinx migrate
 
-
-
-
-services:
-- name: database
-  image: mariadb
-  ports:
-  - 3306
-  environment:
-    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    MYSQL_DATABASE: neptune
-    
 - name: Notifications
   image: appleboy/drone-telegram
   settings:
@@ -51,3 +39,14 @@ services:
       {{else}}
         build {{build.number}} failed. Fix me please.
       {{/success}}
+
+
+services:
+- name: database
+  image: mariadb
+  ports:
+  - 3306
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: neptune
+    
