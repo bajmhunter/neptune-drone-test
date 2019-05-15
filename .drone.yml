@@ -14,6 +14,12 @@ steps:
   image: digitallyseamless/nodejs-bower-grunt:latest
   commands:
   - npm install && bower install && grunt
+- name: Database
+  image: mariadb:latest
+  detach: true
+  commands:
+  - mv application/config/.env.sample application/config/.env
+  - vendor/bin/phinx migrate
 - name: Notifications
   image: appleboy/drone-telegram
   settings:
