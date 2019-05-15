@@ -27,7 +27,7 @@ steps:
   - vendor/bin/phinx migrate
 
 - name: Notifications
-  image: appleboy/drone-telegram
+  image: plugins/drone-telegram
   settings:
     token:
       from_secret: telegram_api
