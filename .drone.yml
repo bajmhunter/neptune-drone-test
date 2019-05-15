@@ -26,9 +26,18 @@ steps:
   - cat application/config/.env
   - vendor/bin/phinx migrate
 
-kind: pipeline
-name: Notifications
-steps:
+
+
+
+services:
+- name: database
+  image: mariadb
+  ports:
+  - 3306
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: neptune
+    
 - name: Notifications
   image: appleboy/drone-telegram
   settings:
@@ -42,13 +51,3 @@ steps:
       {{else}}
         build {{build.number}} failed. Fix me please.
       {{/success}}
-
-
-services:
-- name: database
-  image: mariadb
-  ports:
-  - 3306
-  environment:
-    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    MYSQL_DATABASE: neptune
