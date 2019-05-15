@@ -15,7 +15,7 @@ steps:
 - name: Node, Bower Grunt
   image: digitallyseamless/nodejs-bower-grunt
   commands:
-  - npm install && bower install && grunt
+  - npm install && bower install && grunt 2
   
 - name: Database Setup
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
@@ -26,8 +26,8 @@ steps:
   - echo MYSQL_DB_NAME="neptune" >> application/config/.env
   - vendor/bin/phinx migrate
 
-- name: Notifications
-  image: plugins/drone-telegram
+- name: notify
+  image: appleboy/drone-telegram
   settings:
     token:
       from_secret: telegram_api
