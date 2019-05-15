@@ -19,7 +19,7 @@ steps:
   image: lucor/php7-cli
   detach: true
   commands:
-  - mv /app/application/config/.env.sample /app/application/config/.env
+  - mv /app/application/config/.env.example /app/application/config/.env
   - vendor/bin/phinx migrate
 - name: Notifications
   image: appleboy/drone-telegram
