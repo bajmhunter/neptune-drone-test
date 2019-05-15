@@ -1,24 +1,25 @@
 kind: pipeline
 name: default
+path: /app
 
 steps:
 - name: Composer Install
-  image: composer:latest
+  image: composer
   commands:
   -  composer install
 - name: Translations
-  image: lucor/php7-cli:latest
+  image: lucor/php7-cli
   commands:
   - php bin/install.php translations develop
 - name: Node, Bower Grunt
-  image: digitallyseamless/nodejs-bower-grunt:latest
+  image: digitallyseamless/nodejs-bower-grunt
   commands:
   - npm install && bower install && grunt
-- name: Database
-  image: mariadb:latest
+- name: Database Setup
+  image: lucor/php7-cli
   detach: true
   commands:
-  - mv application/config/.env.sample application/config/.env
+  - mv /app/application/config/.env.sample /app/application/config/.env
   - vendor/bin/phinx migrate
 - name: Notifications
   image: appleboy/drone-telegram
@@ -33,3 +34,13 @@ steps:
       {{else}}
         build {{build.number}} failed. Fix me please.
       {{/success}}
+
+
+services:
+- name: database
+  image: mariadb
+  ports:
+  - 3306
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: neptune
