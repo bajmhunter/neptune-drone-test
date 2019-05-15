@@ -6,24 +6,24 @@ steps:
   image: composer
   commands:
   -  composer install
+  
 - name: Translations
   image: lucor/php7-cli
   commands:
   - php bin/install.php translations develop
+  
 - name: Node, Bower Grunt
   image: digitallyseamless/nodejs-bower-grunt
   commands:
   - npm install && bower install && grunt
+  
 - name: Database Setup
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
   commands:
-  - echo MYSQL_HOST_NAME="database" >> application/config/.env
+  - echo MYSQL_HOST_NAME="Database" >> application/config/.env
   - echo MYSQL_USERNAME="root"  >> application/config/.env
   - echo MYSQL_PASSWORD=""  >> application/config/.env
   - echo MYSQL_DB_NAME="neptune" >> application/config/.env
-
-  - pwd
-  - cat application/config/.env
   - vendor/bin/phinx migrate
 
 - name: Notifications
@@ -42,7 +42,7 @@ steps:
 
 
 services:
-- name: database
+- name: Database
   image: mariadb
   ports:
   - 3306
