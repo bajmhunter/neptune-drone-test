@@ -15,7 +15,7 @@ steps:
 - name: Node, Bower Grunt
   image: digitallyseamless/nodejs-bower-grunt
   commands:
-  - npm install && bower install && grunt j
+  - npm install && bower install && grunt
   
 - name: Database Setup
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
