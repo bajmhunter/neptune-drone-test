@@ -15,7 +15,7 @@ steps:
 - name: Node, Bower Grunt
   image: digitallyseamless/nodejs-bower-grunt
   commands:
-  - npm install && bower install && grunt
+  - npm install && bower install && grunt h
   
 - name: Database Setup
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
@@ -28,6 +28,10 @@ steps:
 
 - name: notify
   image: appleboy/drone-telegram
+  when:
+    status:
+    - success
+    - failure
   settings:
     token:
       from_secret: telegram_api
