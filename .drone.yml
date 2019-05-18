@@ -41,7 +41,7 @@ steps:
       {{#success build.status}}
         build {{build.number}} succeeded. Well Done.
       {{else}}
-        build {{build.number}}, see more details here: {{build.link}}. 
+        build {{build.number}} failed.  Please fix me.
       {{/success}}
 
 
