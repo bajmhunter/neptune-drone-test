@@ -39,7 +39,7 @@ steps:
       from_secret: telegram_user
     message: >
       {{#success build.status}}
-        build #{{build.number}}, based on commit {{truncate build.sha 8}} succeeded. Good job.
+        build {{build.number}}, based on commit {{truncate build.sha 8}} succeeded. Good job.
       {{else}}
         build {{build.number}} failed. Fix me please.
       {{/success}}
