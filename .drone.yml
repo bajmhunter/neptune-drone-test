@@ -15,7 +15,7 @@ steps:
 - name: Node, Bower Grunt
   image: digitallyseamless/nodejs-bower-grunt
   commands:
-  - npm install && bower install && grunt
+  - npm install && bower install && grunt j
   
 - name: Database Setup
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
@@ -39,9 +39,9 @@ steps:
       from_secret: telegram_user
     message: >
       {{#success build.status}}
-        build {{build.number}}, based on commit {{truncate commit.sha 8}} succeeded. Well Done.
+        build {{build.number}} succeeded. Well Done.
       {{else}}
-        build {{build.number}}, based on commit {{truncate commit.sha 8}} failed. See more details here: {{build.link}}. 
+        build {{build.number}}, see more details here: {{build.link}}. 
       {{/success}}
 
 
