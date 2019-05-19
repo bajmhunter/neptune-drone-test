@@ -29,6 +29,7 @@ steps:
 - name: Login Tests
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
   commands:
+    - php -S localhost:80 -t public/
     - vendor/bin/codecept run
 
 - name: notify
