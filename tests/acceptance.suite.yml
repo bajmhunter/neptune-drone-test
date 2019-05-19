@@ -9,6 +9,5 @@ modules:
     enabled:
         - PhpBrowser:
             url: 'http://localhost/'
-            browser: chrome
         - \Helper\Acceptance
     step_decorators: ~        
