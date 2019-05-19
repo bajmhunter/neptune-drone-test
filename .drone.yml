@@ -27,7 +27,7 @@ steps:
   - vendor/bin/phinx migrate
 
 - name: Login Tests
-  image: virtualforce/php7.1-pdo-mysql-ci:1.1
+  image: selenium/standalone-chrome
   commands:
     - vendor/bin/codecept run
 
