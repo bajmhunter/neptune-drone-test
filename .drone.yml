@@ -64,5 +64,6 @@ services:
   commands:
     - a2enmod rewrite
     - echo "date.timezone = \"\${PHP_TIMEZONE}\"" > /usr/local/etc/php/conf.d/timezone.ini
-    - echo -e “$(hostname -i)\t$(hostname) $(hostname).localhost” >> /etc/hosts
+    - echo -e "Webserver.localhost" >> /etc/hosts
+    - echo -e "Webserver" >> /ect/hosts
     - ln -s /drone/src/*[^public] /var/www && rm -rf /var/www/html && ln -nsf /drone/src/public /var/www/html
