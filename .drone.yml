@@ -62,4 +62,6 @@ services:
 - name: Webserver
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
   commands:
+    - pwd
+    - ls
     - php -S localhost:80 -t public/
