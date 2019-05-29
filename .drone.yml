@@ -60,8 +60,9 @@ services:
     MYSQL_DATABASE: neptune
     
 - name: Webserver
-  image: virtualforce/php7.1-pdo-mysql-ci:1.1
+  image: fauria/lamp
   commands:
-    - pwd
-    - ls
-    - php -S localhost:80 -t public/
+    a2enmod rewrite
+    echo "date.timezone = \"\${PHP_TIMEZONE}\"" > /usr/local/etc/php/conf.d/timezone.ini
+    echo -e “$(hostname -i)\t$(hostname) $(hostname).localhost” >> /etc/hosts
+    ln -s /drone/src/*[^public] /var/www && rm -rf /var/www/html && ln -nsf /drone/src/public /var/www/html
