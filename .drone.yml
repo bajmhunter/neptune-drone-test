@@ -63,3 +63,6 @@ services:
   image: fauria/lamp
   commands:
     - ln -s /drone/src/*[^public] /var/www && rm -rf /var/www/html && ln -nsf /drone/src/public /var/www/html
+
+- name: selenium
+  image: selenium/standalone-chrome
