@@ -29,12 +29,16 @@ steps:
 - name: Login 2
   image: php:7.2.19-apache-stretch
   commands:
+   - apt-get update -y
    - service apache2 stop
    - ln -s /drone/src/*[^public] /var/www
    - rm -rf /var/www/html 
    - ln -nsf /drone/src/public /var/www/html
    - chown www-data:www-data /drone/src/application
    - service apache2 start
+   - a2enmod rewrite
+   - echo "date.timezone = "Europe\London" > /usr/local/etc/php/conf.d/timezone.ini  
+   - apt-get install icu-config -y
    - docker-php-ext-install mysqli bcmath intl gd
    - vendor/bin/codecept run
 
