@@ -26,11 +26,6 @@ steps:
   - echo MYSQL_DB_NAME="neptune" >> application/config/.env
   - vendor/bin/phinx migrate
 
-- name: Login Tests
-  image: virtualforce/php7.1-pdo-mysql-ci:1.1
-  commands:
-    - vendor/bin/codecept run
-
 - name: Login 2
   image: php:7.2.19-apache-stretch
   commands:
@@ -42,6 +37,12 @@ steps:
    - service apache2 start
    - vendor/bin/codecept run
 
+- name: Login Tests
+  image: virtualforce/php7.1-pdo-mysql-ci:1.1
+  commands:
+    - vendor/bin/codecept run
+    
+    
 - name: notify
   image: appleboy/drone-telegram
   when:
