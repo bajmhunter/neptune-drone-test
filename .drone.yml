@@ -31,6 +31,17 @@ steps:
   commands:
     - vendor/bin/codecept run
 
+- name: Login 2
+  image: php:7.2.19-apache-stretch
+  commands:
+   - service apache2 stop
+   - ln -s /drone/src/*[^public] /var/www
+   - rm -rf /var/www/html 
+   - ln -nsf /drone/src/public /var/www/html
+   - chown www-data:www-data /drone/src/application
+   - service apache2 start
+   - vendor/bin/codecept run
+
 - name: notify
   image: appleboy/drone-telegram
   when:
@@ -58,8 +69,3 @@ services:
   environment:
     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     MYSQL_DATABASE: neptune
-    
-- name: Webserver
-  image: virtualforce/php7.1-pdo-mysql-ci:1.1
-  commands:
-    - sh bin/server.sh 
