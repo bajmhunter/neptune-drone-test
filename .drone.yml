@@ -63,6 +63,8 @@ steps:
     - success
     - failure
   commands:
+    - apt-get update -y
+    - apt-get install zip unzip -y
     - zip -r /tests_results.zip /drone/src/tests
     
     
