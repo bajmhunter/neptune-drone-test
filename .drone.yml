@@ -35,6 +35,7 @@ steps:
    - ln -nsf /drone/src/public /var/www/html
    - chown www-data:www-data /drone/src/application
    - service apache2 start
+   - docker-php-ext-install mysqli bcmath intl gd
    - vendor/bin/codecept run
 
 - name: Login Tests
