@@ -58,7 +58,8 @@ steps:
 
 - name: Collect Results
   image: php:7.2.19-apache-stretch
-  commands: zip -r /tests_results.zip /drone/src/tests
+  commands:
+    - zip -r /tests_results.zip /drone/src/tests
     
     
 - name: notify
