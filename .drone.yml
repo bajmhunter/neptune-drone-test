@@ -60,11 +60,6 @@ services:
     MYSQL_DATABASE: neptune
     
 - name: Webserver
-  image: fauria/lamp
+  image: virtualforce/php7.1-pdo-mysql-ci:1.1
   commands:
-    - service apache2 stop
-    - ln -s /drone/src/*[^public] /var/www && rm -rf /var/www/html && ln -nsf /drone/src/public /var/www/html
-    - service apache2 start
-
-- name: selenium
-  image: selenium/standalone-chrome
+    - sh bin/server.sh 
