@@ -79,7 +79,7 @@ steps:
     to:
       from_secret: telegram_user
     document:
-     - /tests_results.zip
+      /tests_results.zip
      
      
 - name: Notify Results
