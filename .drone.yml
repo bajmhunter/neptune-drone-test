@@ -37,7 +37,7 @@ steps:
    - chown www-data:www-data /drone/src/application
    - service apache2 start
    - a2enmod rewrite
-   - echo "date.timezone = "Europe\London" > /usr/local/etc/php/conf.d/timezone.ini  
+   - echo "date.timezone = \"Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini  
    - apt-get install icu-config -y
    - docker-php-ext-install mysqli bcmath intl gd
    - vendor/bin/codecept run
