@@ -44,8 +44,8 @@ steps:
    - ln -nsf /drone/src/public /var/www/html
    -  ls /var/www/html/
    - chown www-data:www-data /drone/src/application
-   - service apache2 start
    - a2enmod rewrite
+   - service apache2 start
    - echo "date.timezone = \"Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini  
    - apt-get install libicu-dev zlib1g-dev libgd-dev -y
    - docker-php-ext-install mysqli bcmath intl gd
