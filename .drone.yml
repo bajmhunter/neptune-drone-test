@@ -52,7 +52,7 @@ steps:
 
 services:
 - name: Database
-  image: mariadb
+  image: mariadb:10.3.15
   ports:
   - 3306
   environment:
