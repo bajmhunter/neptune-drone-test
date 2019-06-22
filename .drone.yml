@@ -38,7 +38,7 @@ steps:
    - service apache2 start
    - a2enmod rewrite
    - echo "date.timezone = \"Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini  
-   - apt-get install libicu-dev -y
+   - apt-get install libicu-dev zlib1g-dev libgd-dev -y
    - docker-php-ext-install mysqli bcmath intl gd
    - vendor/bin/codecept run
 
