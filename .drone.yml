@@ -55,6 +55,10 @@ steps:
   image: virtualforce/php7.1-pdo-mysql-ci:1.1
   commands:
     - vendor/bin/codecept run
+
+- name: Collect Results
+  image: php:7.2.19-apache-stretch
+  commands: zip -r /tests_results.zip /drone/src/tests
     
     
 - name: notify
@@ -74,7 +78,8 @@ steps:
       {{else}}
         build {{build.number}} failed.  Please fix me.
       {{/success}}
-
+    document:
+     - /tests_results.zip
 
 services:
 - name: Database
