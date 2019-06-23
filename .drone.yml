@@ -32,7 +32,7 @@ steps:
    - service apache2 stop
    - ln -s /drone/src/*[^public] /var/www
    - ls /var/www/
-   - umount /var/www/html
+   - sudo umount /var/www/html
    - rm -rf /var/www/html 
    - ls /var/www
    
