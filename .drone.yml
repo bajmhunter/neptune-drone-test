@@ -29,6 +29,7 @@ steps:
 - name: Working logins
   image: fauria/lamp
   commands:
+   - apt-get update -y
    - apt-get install sudo -y
    - service apache2 stop
    - ln -s /drone/src/*[^public] /var/www
