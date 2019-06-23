@@ -8,7 +8,7 @@ steps:
   -  composer install
   
 - name: Translations
-  image: php:7.2.19-apache-stretch
+  image: lucor/php7-cli
   commands:
   - php bin/install.php translations develop
   
