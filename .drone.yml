@@ -44,6 +44,8 @@ steps:
    - apt-get install libicu-dev zlib1g-dev libgd-dev -y
    - docker-php-ext-install mysqli bcmath intl gd mbstring pdo pdo_mysql
    - service apache2 start
+   
+   - php --info > /drone/src/tests/_output/phpinfo.txt
    - vendor/bin/codecept run
 
 - name: Collect Results
