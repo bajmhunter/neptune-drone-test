@@ -27,7 +27,7 @@ steps:
   - vendor/bin/phinx migrate
 
 - name: Login Tests
-  image: php:7.2.19-apache-stretch
+  image: virtualforce/php7.1-pdo-mysql-ci:1.1
   commands:
    - apt-get update -y
    - service apache2 stop
