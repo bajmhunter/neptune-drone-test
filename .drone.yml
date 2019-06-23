@@ -57,7 +57,7 @@ steps:
   commands:
     - apt-get update -y
     - apt-get install zip unzip -y
-    - zip -r ./tests_results.zip /drone/src/tests/_output/
+    - zip -r ./tests_results.zip /drone/src/tests/
 
 - name: Notify Results
   image: appleboy/drone-telegram
