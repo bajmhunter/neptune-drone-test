@@ -43,7 +43,6 @@ steps:
    - echo "date.timezone = \"Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini  
    - apt-get install libicu-dev zlib1g-dev libgd-dev -y
    - docker-php-ext-install mysqli bcmath intl gd mbstring pdo pdo_mysql
-   - apt-get install php7.2-mysql -y
    - service apache2 start
    - vendor/bin/codecept run
 
