@@ -25,30 +25,8 @@ steps:
   - echo MYSQL_PASSWORD=""  >> application/config/.env
   - echo MYSQL_DB_NAME="neptune" >> application/config/.env
   - vendor/bin/phinx migrate
-
-- name: Working logins
-  image: fauria/lamp
-  commands:
-   - apt-get update -y
-   - apt-get install sudo -y
-   - service apache2 stop
-   - ln -s /drone/src/*[^public] /var/www
-   - ls /var/www/
-   - sudo umount /var/www/html
-   - rm -rf /var/www/html 
-   - ls /var/www
    
-   - ln -nsf /drone/src/public /var/www/html
-   - ls /var/www/html/
-   - chown www-data:www-data /drone/src/application
-   - a2enmod rewrite
-   - service apache2 start
-   
-   - php --info > /drone/src/tests/_output/phpinfo.txt
-   - vendor/bin/codecept run
-   
-   
-- name: Login Tests
+- name: Acceptance Tests
   image: php:7.2.19-apache-stretch
   commands:
    - apt-get update -y
@@ -66,9 +44,7 @@ steps:
    - apt-get install libicu-dev zlib1g-dev libgd-dev -y
    - docker-php-ext-install mysqli bcmath intl gd mbstring pdo pdo_mysql
    - service apache2 start
-   
-   - php --info > /drone/src/tests/_output/phpinfo.txt
-   - vendor/bin/codecept run
+   - vendor/bin/codecept run acceptance 
 
 - name: Collect Results
   image: php:7.2.19-apache-stretch
