@@ -237,8 +237,12 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 3;
 
+if(getenv('ENVIROMENT') == 'BUILD'{
+  $config['log_threshold'] = 4;
+} else {
+  $config['log_threshold'] = 0;
+}
 /*
 |--------------------------------------------------------------------------
 | Error Logging Directory Path
