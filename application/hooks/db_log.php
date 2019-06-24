@@ -5,7 +5,10 @@ function db_log_queries()
 	$CI = & get_instance();
 
 	// check if database logging is enabled (see config/config.php)
-	if($CI->config->item('db_log_enabled'))
+	if(getenv('ENVIROMENT') != 'PRODUCTION'){
+		$build = true;
+	}
+	if($CI->config->item('db_log_enabled') || $build)
 	{
 		// Creating Query Log file with today's date in application/logs folder
 		$filepath = APPPATH . 'logs/Query-log-' . date('Y-m-d') . '.php';

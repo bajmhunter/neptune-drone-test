@@ -7,10 +7,10 @@ steps:
   commands:
   -  composer install
   
-- name: Translations
-  image: lucor/php7-cli
-  commands:
-  - php bin/install.php translations develop
+#- name: Translations
+#  image: lucor/php7-cli
+#  commands:
+#  - php bin/install.php translations develop
   
 - name: Node, Bower Grunt
   image: digitallyseamless/nodejs-bower-grunt

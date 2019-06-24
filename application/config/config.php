@@ -237,12 +237,23 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-
-if(getenv('ENVIROMENT') == 'BUILD'){
-  $config['log_threshold'] = 4;
-} else {
-  $config['log_threshold'] = 3;
+$ENV = getenv('ENVIROMENT');
+if(isset($ENV)){
+	switch($ENV){
+    case 'BUILD':
+        $config['log_threshold'] = 4;
+        break;
+    case 'DEVELOPMENT':
+        $config['log_threshold'] = 3;
+        break;
+    case 'PRODUCTION':
+    	$config['log_threshold'] = 1;
+    	break;
+    default:
+        $config['log_threshold'] = 0;
+	}
 }
+
 /*
 |--------------------------------------------------------------------------
 | Error Logging Directory Path
