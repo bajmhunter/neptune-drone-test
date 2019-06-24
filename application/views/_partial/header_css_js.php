@@ -5,17 +5,9 @@
     <!-- endbower -->
 
     <!-- neptune:css -->
-
-
     <link rel="stylesheet" type="text/css" href="/css/checkin.css"/>
-
-
     <link rel="stylesheet" type="text/css" href="/css/login.css"/>
-
-
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-
-
     <!-- endneptune:css -->
 
     <!-- bower:js -->
@@ -25,6 +17,4 @@
     <!-- endbower -->
 
     <!-- neptune:js -->
-
-
     <!-- endneptune:js -->
