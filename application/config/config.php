@@ -241,7 +241,7 @@ $config['allow_get_array'] = TRUE;
 if(getenv('ENVIROMENT') == 'BUILD'){
   $config['log_threshold'] = 4;
 } else {
-  $config['log_threshold'] = 0;
+  $config['log_threshold'] = 3;
 }
 /*
 |--------------------------------------------------------------------------
