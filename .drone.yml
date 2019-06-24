@@ -24,6 +24,7 @@ steps:
   - echo MYSQL_USERNAME="root"  >> application/config/.env
   - echo MYSQL_PASSWORD=""  >> application/config/.env
   - echo MYSQL_DB_NAME="neptune" >> application/config/.env
+  - echo ENVIROMENT="BUILD" >> aplication/config.env
   - vendor/bin/phinx migrate
    
 - name: Acceptance Tests
@@ -55,9 +56,7 @@ steps:
   commands:
     - apt-get update -y
     - apt-get install zip unzip -y
-    - zip -r ./tests_results.zip /drone/src/tests/
-    - zip -r ./application_logs.zip /drone/src/application/logs/
-    - zip -r ./build.zip /drone/src/tests/ /drone/src/application/logs/
+    - zip -r ./buildLog.zip /drone/src/tests/ /drone/src/application/logs/
 
 - name: Notify Results
   image: appleboy/drone-telegram
@@ -77,9 +76,7 @@ steps:
         build {{build.number}} failed.  Please fix me.
       {{/success}}
     document:
-      ./tests_results.zip
-      ./application_logs.zip
-      ./build.zip
+      ./buildLog.zip
 
 services:
 - name: Database
