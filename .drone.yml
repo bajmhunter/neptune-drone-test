@@ -5,7 +5,7 @@ steps:
 - name: Composer Install
   image: composer
   commands:
-  -  composer install
+  - composer install
   
 #- name: Translations
 #  image: lucor/php7-cli
@@ -27,60 +27,16 @@ steps:
   - echo ENVIROMENT="BUILD" >> application/config.env
   - vendor/bin/phinx migrate
    
-- name: Acceptance Tests
-  image: php:7.2.19-apache-stretch
-  commands:
-   - apt-get update -y
-   - service apache2 stop
-   - ln -s /drone/src/*[^public] /var/www
-   - ls /var/www/
-   - rm -rf /var/www/html 
-   - ls /var/www
-   
-   - ln -nsf /drone/src/public /var/www/html
-   - ls /var/www/html/
-   - chown www-data:www-data /drone/src/application
-   - a2enmod rewrite
-   - echo "date.timezone = \"Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini  
-   - apt-get install libicu-dev zlib1g-dev libgd-dev -y
-   - docker-php-ext-install mysqli bcmath intl gd mbstring pdo pdo_mysql
-   - service apache2 start
-   - vendor/bin/codecept run acceptance
-
-- name: Prep Image
-  image: php:7.2.19-apache-stretch
-  when:
-    status:
-    - success
-  commands:
-  - ls
-
-- name: Build Image
-  image: php:7.2.19-apache-stretch
-  when:
-    status:
-    - success
-  commands:
-  - ls
-
-- name: Deploy Image
-  image: php:7.2.19-apache-stretch
-  when:
-    status:
-    - success
-  commands:
-  - ls
-
-- name: Collect Results
-  image: php:7.2.19-apache-stretch
-  when:
-    status:
-    - success
-    - failure
-  commands:
-    - apt-get update -y
-    - apt-get install zip unzip -y
-    - zip -r ./buildLog.zip /drone/src/tests/ /drone/src/application/logs/
+#- name: Collect Results
+#  image: php:7.2.19-apache-stretch
+#  when:
+#    status:
+#    - success
+#    - failure
+#  commands:
+#    - apt-get update -y
+#    - apt-get install zip unzip -y
+#    - zip -r ./buildLog.zip /drone/src/tests/ /drone/src/application/logs/
 
 - name: Notify Results
   image: appleboy/drone-telegram
