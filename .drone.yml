@@ -37,7 +37,6 @@ steps:
    - a2enmod rewrite
    - docker-php-ext-install mysqli bcmath intl gd
    - echo "date.timezone = \"\Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini
-   - mv /drone/src/ ./app
    - ln -s /app/*[^public] /var/www
    - rm -rf /var/www/html
    - ln -nsf /app/public /var/www/html
