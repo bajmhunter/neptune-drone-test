@@ -7,10 +7,10 @@ steps:
   commands:
   - composer install
   
-#- name: Translations
-#  image: lucor/php7-cli
-#  commands:
-#  - php bin/install.php translations develop
+- name: Translations
+  image: lucor/php7-cli
+  commands:
+  - php bin/install.php translations develop
   
 - name: Node, Bower Grunt
   image: digitallyseamless/nodejs-bower-grunt
@@ -27,6 +27,28 @@ steps:
   - echo ENVIROMENT="BUILD" >> application/config.env
   - vendor/bin/phinx migrate
    
+- name: Build Docker image (DEV)
+  image: php:7.3-apache
+  when:
+    branch: Develop 
+  commands:
+   - apt-get update
+   - apt-get install -y libicu-dev libgd-dev openssl
+   - a2enmod rewrite
+   - docker-php-ext-install mysqli bcmath intl gd
+   - echo "date.timezone = \"\Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini
+   - mv /drone/src/ ./app
+   - ln -s /app/*[^public] /var/www
+   - rm -rf /var/www/html
+   - ln -nsf /app/public /var/www/html
+   - chmod 755 /app/public/uploads
+   - chown -R www-data:www-data /app/public /app/application
+   - curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > docker-compose
+   - chmod +x docker-compose
+   - sudo mv docker-compose /usr/local/bin
+   - docker tag neptune:$$DRONE_BUILD_NUMBER
+   - docker push docker push registry.brycemas.duckdns.org/neptune:$$DRONE_BUILD_NUMBER
+
 #- name: Collect Results
 #  image: php:7.2.19-apache-stretch
 #  when:
