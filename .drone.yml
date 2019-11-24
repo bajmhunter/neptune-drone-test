@@ -30,7 +30,7 @@ steps:
 - name: Build Docker image (DEV)
   image: php:7.3-apache
   when:
-    branch: Develop 
+    branch: develop 
   commands:
    - apt-get update
    - apt-get install -y libicu-dev libgd-dev openssl
