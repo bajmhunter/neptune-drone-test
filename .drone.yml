@@ -1,7 +1,16 @@
 kind: pipeline
 name: default
 
+clone:
+  disable: true
+
 steps:
+- clone:
+  image: alpine/git
+  commands:
+  - git clone https://github.com/octocat/hello-world.git ./app
+  - git checkout $DRONE_COMMIT 
+
 - name: Composer Install
   image: composer
   commands:
@@ -32,11 +41,10 @@ steps:
   when:
     branch: develop 
   commands:
-   - apt-get update
    - apt-get install -y libicu-dev libgd-dev openssl
    - a2enmod rewrite
    - docker-php-ext-install mysqli bcmath intl gd
-   - echo "date.timezone = \"\Europe/London\"" > /usr/local/etc/php/conf.d/timezone.ini
+
    - ln -s /app/*[^public] /var/www
    - rm -rf /var/www/html
    - ln -nsf /app/public /var/www/html
